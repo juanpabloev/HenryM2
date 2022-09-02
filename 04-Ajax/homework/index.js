@@ -1,17 +1,17 @@
-$("#boton").click(() => {
-  $.get("http://localhost:5000/amigos", (response) => {
-    if ($("#lista")) {
-      $("#lista")[0].innerHTML = "";
-    }
-    for (const user of response) {
-      $(`
-          <li>Nombre: ${user.name}<br>
-          Edad: ${user.age}<br>
-          Email: ${user.email}<br>
-           Id: ${user.id}</li>
-          `).appendTo("#lista");
-    }
+const createListItems = function (response) {
+  response.forEach((element) => {
+    $(`<li><b>${element.name}</b></li>`).appendTo("#lista");
   });
+};
+
+$("#boton").click(() => {
+  $("#lista").empty();
+  $.get("http://localhost:5000/amigos", createListItems); //(response) => {
+  //   $("#lista").empty();
+  //   // for (const user of response) {
+  //        $(`<li><b>${element.name}</b></li>`).appendTo("#lista");
+  //   // }
+  // });
 });
 
 $("#search").click(() => {
@@ -26,8 +26,10 @@ $("#delete").click(() => {
   $.ajax({
     url: `http://localhost:5000/amigos/${id}`,
     type: "DELETE",
-    success: function () {
+    success: function (response) {
       $("#success")[0].innerHTML = "<b>Tu amigo fue eliminado con exito<b>";
+      $("#lista").empty();
+      createListItems(response);
     },
   });
 });
