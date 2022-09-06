@@ -11,6 +11,7 @@ export default function Cards(props) {
           name={city.name}
           img={city.weather[0].icon}
           onClose={() => alert(city.name)}
+          key={city.id}
         />
       ))}
     </div>
