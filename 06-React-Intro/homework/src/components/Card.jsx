@@ -13,7 +13,6 @@ export default function Card(props) {
       <img
         src={`http://openweathermap.org/img/wn/${props.img}@2x.png`}
         alt="weather condition"
-        srcset=""
       />
     </div>
   );
