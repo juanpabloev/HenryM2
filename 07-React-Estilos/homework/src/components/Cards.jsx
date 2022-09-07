@@ -1,7 +1,29 @@
-import React from 'react';
+import React from "react";
+import Card from "./Card";
+import styled from "styled-components";
+
+const CardsDiv = styled.div`
+  display: inline-flexbox;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  width: 50%;
+  margin: auto;
+`;
 
 export default function Cards(props) {
-  // acá va tu código
-  // tip, podés usar un map
-  return <div>Cards Component</div>
-};
+  return (
+    <CardsDiv>
+      {props.cities.map((city) => (
+        <Card
+          max={city.main.temp_max}
+          min={city.main.temp_min}
+          name={city.name}
+          img={city.weather[0].icon}
+          onClose={() => alert(city.name)}
+          key={city.id}
+        />
+      ))}
+    </CardsDiv>
+  );
+}
