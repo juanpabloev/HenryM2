@@ -3,30 +3,24 @@ import styled from "styled-components";
 
 const SearchButton = styled.button`
   background-color: black;
-  display: flex;
+  display: inline-flex;
   color: #065506;
   border: 1px solid #055905;
   border-radius: 6px;
+  text-align: center;
+  margin: auto;
 `;
 const Searchinput = styled.input`
   border-radius: 5px;
   display: inline-flex;
-`;
-
-const Searchbar = styled.div`
-  background-color: #616161;
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  width: 40%;
-  height: 100px;
-  border-radius: 15px;
+  margin: auto;
 `;
 
 export default function SearchBar(props) {
   // acá va tu código
   return (
-    <Searchbar>
+    <div>
       <Searchinput
         type="text"
         name="search"
@@ -34,6 +28,6 @@ export default function SearchBar(props) {
         placeholder="Busca tu ciudad.."
       />
       <SearchButton onClick={props.onSearch}>Agregar</SearchButton>
-    </Searchbar>
+    </div>
   );
 }

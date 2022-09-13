@@ -1,11 +1,12 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import Nav from "./components/Nav";
+import "./App.css";
 
 export default function App() {
   return (
     <div className="App">
-      { /* Tu código acá: */ }
-      <h1>Título</h1>
+      {/* Tu código acá: */}
+      <Nav />
     </div>
   );
 }
